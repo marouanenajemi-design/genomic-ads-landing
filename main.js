@@ -56,8 +56,8 @@
     const floatWa = document.getElementById('floatWa');
     if (floatWa) {
       floatWa.href = lang === 'ar'
-        ? 'https://wa.me/212600136142?text=السلام%20عليكم%2C%20أريد%20الاستفسار%20عن%20برامج%20التكوين'
-        : 'https://wa.me/212600136142?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20les%20formations';
+        ? 'https://wa.me/212633975386?text=السلام%20عليكم%2C%20أريد%20الاستفسار%20عن%20برامج%20التكوين'
+        : 'https://wa.me/212633975386?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20les%20formations';
     }
 
     /* Update WhatsApp buttons — branch cards use data-wa-ar/fr; generic buttons use Tanger default */
@@ -67,8 +67,8 @@
         a.href = lang === 'ar' ? a.getAttribute('data-wa-ar') : a.getAttribute('data-wa-fr');
       } else {
         a.href = lang === 'ar'
-          ? 'https://wa.me/212600136142?text=السلام%20عليكم%2C%20أريد%20الاستفسار%20عن%20برامج%20التكوين'
-          : 'https://wa.me/212600136142?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20les%20formations';
+          ? 'https://wa.me/212633975386?text=السلام%20عليكم%2C%20أريد%20الاستفسار%20عن%20برامج%20التكوين'
+          : 'https://wa.me/212633975386?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20les%20formations';
       }
     });
   }
@@ -297,7 +297,7 @@
     if (!valid) return;
 
     /* Route to the correct branch phone number */
-    const waNumbers = { tanger: '212600136142', taroudant: '212772584951' };
+    const waNumbers = { tanger: '212633975386', taroudant: '212772584951' };
     const branchKey = branchEl ? branchEl.value : 'tanger';
     const waNumber  = waNumbers[branchKey] || waNumbers.tanger;
 
