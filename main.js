@@ -51,26 +51,6 @@
 
     /* Translate form placeholders */
     updateFormPlaceholders(lang);
-
-    /* Update WhatsApp floating button — defaults to Tanger branch */
-    const floatWa = document.getElementById('floatWa');
-    if (floatWa) {
-      floatWa.href = lang === 'ar'
-        ? 'https://wa.me/212600136142?text=السلام%20عليكم%2C%20أريد%20الاستفسار%20عن%20برامج%20التكوين'
-        : 'https://wa.me/212600136142?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20les%20formations';
-    }
-
-    /* Update WhatsApp buttons — branch cards use data-wa-ar/fr; generic buttons use Tanger default */
-    document.querySelectorAll('a[href^="https://wa.me"]').forEach(a => {
-      if (a.classList.contains('float-wa')) return;
-      if (a.hasAttribute('data-wa-ar') && a.hasAttribute('data-wa-fr')) {
-        a.href = lang === 'ar' ? a.getAttribute('data-wa-ar') : a.getAttribute('data-wa-fr');
-      } else {
-        a.href = lang === 'ar'
-          ? 'https://wa.me/212600136142?text=السلام%20عليكم%2C%20أريد%20الاستفسار%20عن%20برامج%20التكوين'
-          : 'https://wa.me/212600136142?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20les%20formations';
-      }
-    });
   }
 
   function updateFormPlaceholders(lang) {
