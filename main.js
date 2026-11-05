@@ -195,7 +195,7 @@
   const progSelect = document.getElementById('program');
   if (progSelect) progSelect.addEventListener('change', () => clearError('program', 'programError'));
 
-  form.addEventListener('submit', async e => {
+  form.addEventListener('submit', e => {
     e.preventDefault();
     let valid = true;
 
@@ -307,21 +307,7 @@ const waNumber = '212772584951';
     }
 
     const waUrl = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(waMessage);
-// ================================================
-// GOOGLE SHEETS — SAVE LEADS
-// ================================================
 
-const GOOGLE_SHEETS_URL =
-  'https://script.google.com/macros/s/AKfycbxEsVveP0GQaujeGoqLS3dsMsb3xnUCmGLjt6688d8gqR-56KRZ6lKiJQSloVC1zLh8DQ/exec';
-
-const leadData = {
-  name: nameVal,
-  phone: phoneVal,
-  city: cityVal,
-  branch: branchVal,
-  program: programVal,
-  language: currentLang
-};
     /* Meta Pixel — fire tracking before redirect */
     if (typeof fbq === 'function') {
       fbq('track', 'Lead');
@@ -332,37 +318,12 @@ const leadData = {
 
     console.log('Lead sent:', branchKey, '→', waNumber);
 
-/* ================================================
-   SAVE LEAD TO GOOGLE SHEETS
-================================================ */
-
-// Open WhatsApp tab before waiting for the request
-const whatsappWindow = window.open('about:blank', '_blank');
-
-try {
-  await fetch(GOOGLE_SHEETS_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: {
-      'Content-Type': 'text/plain;charset=utf-8'
-    },
-    body: JSON.stringify(leadData)
+    /* Reset form immediately, then open WA after pixel has time to fire */
+    form.reset();
+    setTimeout(() => {
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    }, 500);
   });
-
-  console.log('Lead sent to Google Sheets');
-
-} catch (error) {
-  console.error('Google Sheets error:', error);
-}
-
-/* Reset form and redirect to WhatsApp */
-form.reset();
-
-if (whatsappWindow) {
-  whatsappWindow.location.href = waUrl;
-} else {
-  window.location.href = waUrl;
-}
 
   /* ================================================
      SCROLL REVEAL
