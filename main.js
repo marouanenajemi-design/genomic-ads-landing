@@ -276,10 +276,9 @@
 
     if (!valid) return;
 
-    /* Route to the correct branch phone number */
-    const waNumbers = { tanger: '212600136142', taroudant: '212772584951' };
-    const branchKey = branchEl ? branchEl.value : 'tanger';
-    const waNumber  = waNumbers[branchKey] || waNumbers.tanger;
+// One WhatsApp number for all branches
+const branchKey = branchEl ? branchEl.value : 'tanger';
+const waNumber = '2127XXXXXXXX';
 
     /* Build WhatsApp message — all fields + language label */
     let waMessage;
