@@ -278,7 +278,7 @@
 
 // One WhatsApp number for all branches
 const branchKey = branchEl ? branchEl.value : 'tanger';
-const waNumber = '2127XXXXXXXX';
+const waNumber = '212772584951';
 
     /* Build WhatsApp message — all fields + language label */
     let waMessage;
